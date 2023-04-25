@@ -21,15 +21,29 @@ void clean(va_list ar, buffer_t *output)
  * @format: Character string to print - may contain directives.
  * @output: A buffer_t struct containing a buffer.
  * @ar: A va_list of arguments.
- * *f: cretate a funtion to the work.
+ *
  *
  * Return: The number of characters stored to output.
  */
+
 int run_printf(const char *format, va_list ar, buffer_t *output)
 {
 	int i, wid, prec, ret = 0;
 	char tmp;
 	unsigned char flag, len;
+
+/**
+  * int - brief Used in conjunction with a variadic function.
+  * to output formatted text.
+  * @f: pointer variabe.
+  * va_list: A variable argument list of type 'va_list'.
+  * buffer_t: A pointer to a buffer_t struct to store the output.
+  * unsigned_char: An unsigned char representing a format specifier.
+  *
+  *
+  * Return:return An unsigned integer representing the number.
+  */
+
 	unsigned int (*f)(va_list, buffer_t *,
 			unsigned char, int, int, unsigned char);
 
