@@ -1,18 +1,18 @@
 #include "main.h"
 
-unsigned int convert_di(va_list args, buffer_t *output,
+unsigned int convert_di(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_b(va_list args, buffer_t *output,
+unsigned int convert_b(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_u(va_list args, buffer_t *output,
+unsigned int convert_u(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_o(va_list args, buffer_t *output,
+unsigned int convert_o(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
 
 /**
  * convert_di - Converts an argument to a signed int and
- *              stores it to a buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
+ * stores it to a buffer contained in a struct.
+ * @ar: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
  * @prec: A precision modifier.
@@ -21,7 +21,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_di(va_list args, buffer_t *output,
+unsigned int convert_di(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
 	long int d, copy;
@@ -29,9 +29,9 @@ unsigned int convert_di(va_list args, buffer_t *output,
 	char pad, space = ' ', neg = '-', plus = '+';
 
 	if (len == LONG)
-		d = va_arg(args, long int);
+		d = va_arg(ar, long int);
 	else
-		d = va_arg(args, int);
+		d = va_arg(ar, int);
 	if (len == SHORT)
 		d = (short)d;
 
@@ -84,7 +84,7 @@ unsigned int convert_di(va_list args, buffer_t *output,
 /**
  * convert_b - Converts an unsigned int argument to binary
  *             and stores it to a buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
+ * @ar: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
  * @prec: A precision modifier.
@@ -93,12 +93,12 @@ unsigned int convert_di(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_b(va_list args, buffer_t *output,
+unsigned int convert_b(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned int num;
 
-	num = va_arg(args, unsigned int);
+	num = va_arg(ar, unsigned int);
 
 	(void)len;
 
@@ -108,7 +108,7 @@ unsigned int convert_b(va_list args, buffer_t *output,
 /**
  * convert_o - Converts an unsigned int to octal and
  *             stores it to a buffer contained in a struct.
- * @args: A va_list poinitng to the argument to be converted.
+ * @ar: A va_list poinitng to the argument to be converted.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
  * @prec: A precision modifier.
@@ -117,7 +117,7 @@ unsigned int convert_b(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_o(va_list args, buffer_t *output,
+unsigned int convert_o(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned long int num;
@@ -125,9 +125,9 @@ unsigned int convert_o(va_list args, buffer_t *output,
 	char zero = '0';
 
 	if (len == LONG)
-		num = va_arg(args, unsigned long int);
+		num = va_arg(ar, unsigned long int);
 	else
-		num = va_arg(args, unsigned int);
+		num = va_arg(ar, unsigned int);
 	if (len == SHORT)
 		num = (unsigned short)num;
 
@@ -146,7 +146,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
 /**
  * convert_u - Converts an unsigned int argument to decimal and
  *               stores it to a buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
+ * @ar: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
  * @prec: A precision modifier.
@@ -155,16 +155,16 @@ unsigned int convert_o(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_u(va_list args, buffer_t *output,
+unsigned int convert_u(va_list ar, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
 	unsigned long int num;
 	unsigned int ret = 0;
 
 	if (len == LONG)
-		num = va_arg(args, unsigned long int);
+		num = va_arg(ar, unsigned long int);
 	else
-		num = va_arg(args, unsigned int);
+		num = va_arg(ar, unsigned int);
 	if (len == SHORT)
 		num = (unsigned short)num;
 
