@@ -41,17 +41,7 @@ unsigned int convert_s(va_list args, buffer_t *output,
 	ret += print_string_width(output, flags, wid, prec, size);
 
 	prec = (prec == -1) ? size : prec;
-	while (*str != '\0' && prec > 0)
-	{
-		ret += _memcpy(output, str, 1);
-		prec--;
-		str++;
-	}
-
-	ret += print_neg_width(output, ret, flags, wid);
-
-	return (ret);
-}
+	whil}
 
 /**
  * convert_S - Converts an argument to a string and
