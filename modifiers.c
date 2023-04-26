@@ -42,6 +42,21 @@ unsigned int print_width(buffer_t *output, unsigned int printed,
  *
  * Return: The number of bytes stored to the buffer.
  */
+unsigned int print_string_width(buffer_t *output,
+		unsigned char flags, int wid, int prec, int size)
+{
+	unsigned int ret = 0;
+	char width = ' ';
+
+	if (NEG_FLAG == 0)
+	{
+		wid -= (prec == -1) ? size : prec;
+		for (; wid > 0; wid--)
+			ret += _memcpy(output, &width, 1);
+	}
+
+	return (ret);
+}
 
 /**
  * print_neg_width - Stores trailing spaces to a buffer for a '-' flag.
