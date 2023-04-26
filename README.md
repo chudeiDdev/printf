@@ -1,5 +1,5 @@
-##Printf project
-Nwoko Ifechukwudei
+## Printf project
+Nwoko Ifechukwudei &
 Anya Ifeanyi
 
 0x11. C - printf
