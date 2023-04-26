@@ -17,7 +17,7 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
  */
 unsigned char handle_flags(const char *flag, char *index)
 {
-	int i, j;
+	int a, b;
 	unsigned char ret = 0;
 	flag_t flags[] = {
 		{'+', PLUS},
